@@ -8,14 +8,14 @@ class Item(db.Model):
     imageUrl = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    pokemonId = db.Column(db.Integer, nullable=False)
+    pokemonId = db.Column(db.Integer, db.ForeignKey("pokemons.id"), nullable=False)
     createdAt = db.Column(db.Date, nullable=False)
     updatedAt = db.Column(db.Date, nullable=False)
 
 
-    item = db.relationship(
+    pokemon = db.relationship(
         "Pokemon",
-        back_populates="pokemon"
+        back_populates="item"
     )
 
     def __repr__(self):

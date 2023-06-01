@@ -31,7 +31,7 @@ class Pokemon(db.Model):
     defense = db.Column(db.Integer, nullable=False)
     imageUrl = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(255), nullable=False, unique=True)
-    type = db.Column(db.Enum(Types), nullable=False)
+    type = db.Column(db.Enum(Types), nullable=True)
     moves = db.Column(db.String(255), nullable=False)
     encounterRate = db.Column(db.Numeric(3, 2), nullable=False, default=1.00)
     catchRate = db.Column(db.Numeric(3, 2), nullable=False, default=1.00)
@@ -39,9 +39,9 @@ class Pokemon(db.Model):
     createdAt = db.Column(db.Date, nullable=False)
     updatedAt = db.Column(db.Date, nullable=False)
 
-    pokemon = db.relationship(
+    item = db.relationship(
         "Item",
-        back_populates="item"
+        back_populates="pokemon"
     )
 
     def __repr__(self):
