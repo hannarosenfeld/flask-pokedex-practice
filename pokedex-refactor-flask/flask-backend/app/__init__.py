@@ -15,8 +15,8 @@ app.config.from_object(Config)
 db.init_app(app)
 Migrate(app, db)
 
-app.register_blueprint(pokemon, url_prefix="/pokemon")
-app.register_blueprint(items, url_prefix="/items")
+app.register_blueprint(pokemon, url_prefix="/api/pokemon")
+app.register_blueprint(items, url_prefix="/api/items")
 
 
 
