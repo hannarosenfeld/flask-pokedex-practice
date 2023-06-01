@@ -33,14 +33,14 @@ class Pokemon(db.Model):
     name = db.Column(db.String(255), nullable=False, unique=True)
     type = db.Column(db.Enum(Types), nullable=False)
     moves = db.Column(db.String(255), nullable=False)
-    encounterRate = db.Column(db.Decimal(3, 2), nullable=False, default_value=1.00)
-    catchRate = db.Column(db.Decimal(3, 2), nullable=False, default_value=1.00)
-    captured = db.Column(db.Boolean, nullable=False, default_value=False)
+    encounterRate = db.Column(db.Numeric(3, 2), nullable=False, default=1.00)
+    catchRate = db.Column(db.Numeric(3, 2), nullable=False, default=1.00)
+    captured = db.Column(db.Boolean, nullable=False, default=False)
     createdAt = db.Column(db.Date, nullable=False)
     updatedAt = db.Column(db.Date, nullable=False)
 
     pokemon = db.relationship(
-        "Items",
+        "Item",
         back_populates="item"
     )
 
